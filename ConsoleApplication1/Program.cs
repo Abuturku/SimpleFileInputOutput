@@ -15,20 +15,19 @@ namespace ConsoleApplication1
 
             if (!(File.Exists(path)))
             {
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    sw.WriteLine("Hello");
-                    sw.WriteLine("And");
-                    sw.WriteLine("Welcome");
-                }
+                StreamWriter sw = File.CreateText(path);
+                
+                sw.WriteLine("Hello");
+                sw.WriteLine("and");
+                sw.WriteLine("Welcome");
+                sw.Close();
+                
             }
 
-            //FileStream s2 = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-            
 
             Console.WriteLine(File.ReadAllText(path));
 
-            File.AppendAllText(path, Console.ReadLine());
+            File.AppendAllText(path, Console.ReadLine() + "\n");
 
         }
     }
